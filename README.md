@@ -4,7 +4,7 @@
 [![Package Version](https://img.shields.io/github/v/release/YourUsername/MountainViewUI)](https://github.com/YourUsername/MountainViewUI/releases)
 [![License](https://img.shields.io/github/license/YourUsername/MountainViewUI)](https://github.com/YourUsername/MountainViewUI/blob/main/LICENSE)
 
-![MountainViewUI Banner](/Images/MountainViewUI_Banner.png)
+![MountainViewUI Banner](/images/MountainViewUI_Banner.png)
 
 MountainViewUI is a Material Design implementation for Swift that brings the modern and beautiful UI elements from Google's Material Design to your iOS apps. It provides a collection of ready-to-use components, icons, and styles inspired by Google's Material Theme.
 
