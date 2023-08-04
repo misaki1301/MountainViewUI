@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 15, *)
-struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
+public struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
 	var id: String = ""
 	var text: String
 	var action: () -> Void
@@ -16,7 +16,7 @@ struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
 	var horizontal: Double = 24
 	var buttonStyle: ButtonStyleType
 	
-	var body: some View {
+	public var body: some View {
 		Button(action: {}) {
 			Text(text)
 				.padding(.vertical, vertical)
