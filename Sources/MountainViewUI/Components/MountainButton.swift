@@ -24,7 +24,7 @@ public struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
 		self.horizontal = horizontal
 		self.buttonStyle = buttonStyle
 	}
-	
+
 	public var body: some View {
 		Button(action: {}) {
 			Text(text)
