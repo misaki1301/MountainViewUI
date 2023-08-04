@@ -16,6 +16,15 @@ public struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
 	var horizontal: Double = 24
 	var buttonStyle: ButtonStyleType
 	
+	public init(id: String = "", text: String, action: @escaping () -> Void, vertical: Double = 10, horizontal: Double = 24, buttonStyle: ButtonStyleType) {
+		self.id = id
+		self.text = text
+		self.action = action
+		self.vertical = vertical
+		self.horizontal = horizontal
+		self.buttonStyle = buttonStyle
+	}
+
 	public var body: some View {
 		Button(action: {}) {
 			Text(text)
@@ -32,6 +41,7 @@ struct Button_Previews: PreviewProvider {
 		VStack {
 			Text("MountainView Buttons")
 				.font(.MountainView.relative(.regular, size: 32, relativeTo: .body))
+			MountainViewButton(text: "Help", action: {}, buttonStyle: MountainButtonStyle())
 			MountainViewButton(text: "Contained", action: {}, buttonStyle: MountainButtonStyle())
 			MountainViewButton(text: "Filled", action: {}, buttonStyle: MountainFillButtonStyle())
 			MountainViewButton(text: "Outlined", action: {}, buttonStyle: MountainOutlinedButtonStyle())
