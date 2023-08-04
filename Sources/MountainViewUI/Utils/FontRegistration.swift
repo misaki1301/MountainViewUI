@@ -24,7 +24,7 @@ func registerFont(named name: String) throws {
 	}
 }
 
-struct MountainViewFont {
+public struct MountainViewFont {
 	public let name: String
 	
 	private init(named name: String) {
@@ -48,12 +48,12 @@ struct MountainViewFont {
 extension Font {
 	public struct MountainView {
 		/// Returns a fixed-size font of the specified style.
-			   static func fixed(_ style: MountainViewFont, size: CGFloat) -> Font {
+			   public static func fixed(_ style: MountainViewFont, size: CGFloat) -> Font {
 				 return Font.custom(style.name, fixedSize: size)
 			  }
 
 			  /// Returns a relative-size font of the specified style.
-			   static func relative(_ style: MountainViewFont, size: CGFloat, relativeTo
+			   public static func relative(_ style: MountainViewFont, size: CGFloat, relativeTo
 			  textStyle: Font.TextStyle) -> Font {
 				 return Font.custom(style.name, size: size, relativeTo: textStyle)
 			  }
