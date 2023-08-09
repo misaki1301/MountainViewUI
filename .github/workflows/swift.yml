@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  SCHEME: MountainViewUI
+  TEST_DEVICE: platform=iOS Simulator,name=Iphone 11,OS=16.4
+
 jobs:
   build:
 
@@ -17,6 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: swift build -v
+    - run: xcodebuild -scheme '${{ env.SCHEME }}' -sdk iphonesimulator -destination '${{ env.TEST_DEVICE }}' build
+     # run: swift build -v
     - name: Run tests
-      run: swift test -v
+    - run: xcodebuild -scheme '${{ env.SCHEME }}' -sdk iphonesimulator -destination '${{ env.TEST_DEVICE }}' test
+      # run: swift test -v
