@@ -11,7 +11,7 @@ on:
 
 env:
   SCHEME: MountainViewUI
-  TEST_DEVICE: platform=iOS Simulator,name=Iphone 11,OS=16.4
+  TEST_DEVICE: platform=iOS Simulator,name=Iphone 11 Pro Max,OS=16.2
 
 jobs:
   build:
