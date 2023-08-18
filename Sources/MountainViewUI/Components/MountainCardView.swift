@@ -2,65 +2,10 @@
 //  MountainViewCard.swift
 //
 //
-//  Created by Paul Frank Pacheco Carpio on 12/08/23.
+//  Created by misaki1301 on 12/08/23.
 //
 
 import SwiftUI
-
-@available(iOS 15, *)
-@available(macOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct MountainViewCardImage: ViewModifier {
-	var isLocal: Bool = false
-	var image: String = "https://otakuusamagazine.com/wp-content/uploads/2023/07/knapsack-kid.jpg"
-
-	public func body(content: Content) -> some View {
-		VStack(spacing: 0) {
-			if isLocal {
-				Image(image)
-					.resizable()
-					.scaledToFill()
-			} else {
-				AsyncImage(url: URL(string: image)) { image in
-					image.resizable()
-						.scaledToFill()
-
-				} placeholder: {
-					ProgressView()
-				}
-			}
-			content
-				
-		}
-	}
-}
-
-public struct MountainCardViewContainer: ViewModifier {
-	var cornerRadius: Double = 12
-	var padding: Double = 16
-	var paddingBetweenCards: Double = 8
-	var alignment: HorizontalAlignment = .leading
-	public func body(content: Content) -> some View {
-		content
-		.frame(maxWidth: .infinity, alignment: .leading)
-		   .overlay(content: {
-			   // outlined variant
-			   RoundedRectangle(cornerRadius: cornerRadius).stroke(MountainColor.outline_variant.color)
-		   })
-		   .background(MountainColor.surface.color)
-		   .cornerRadius(cornerRadius)
-	}
-}
-
-extension View {
-	func imageTop(isLocal: Bool = true, image: String) -> some View {
-		modifier(MountainViewCardImage(isLocal: isLocal, image: image))
-	}
-	func cardView(cornerRadius: Double = 12, padding: Double = 16, paddingBetweenCards: Double = 8, alignment: HorizontalAlignment = .leading) -> some View {
-		modifier(MountainCardViewContainer(cornerRadius: cornerRadius, padding: padding, paddingBetweenCards: paddingBetweenCards, alignment: alignment))
-	}
-}
 
 enum Orientation {
 	case vertical
@@ -154,44 +99,37 @@ where Image: View, Content: View, Footer: View {
 	}
 }
 
-@available(iOS 15, *)
-@available(macOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct MountainViewCardExample<Content: View>: View {
-	var cornerRadius: Double = 12
-	var padding: Double = 16
-	var paddingBetweenCards: Double = 8
-	var alignment: HorizontalAlignment = .leading
-	var image: () -> Content
-	
-	init(image: @escaping () -> Content) {
-		self.image = image
-	}
-	
-	public var body: some View {
-		VStack(alignment: alignment) {
-			Text("Headline").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
-			Text("Subhead").font(.MountainView.relative(.medium, size: 16, relativeTo: .subheadline))
-			Text("Supporting text")
-			HStack {
-				Spacer()
-				MountainViewButton(text: "Action", action: {}, buttonStyle: MountainOutlinedButtonStyle())
-				MountainViewButton(text: "Action", action: {}, buttonStyle: MountainFillButtonStyle())
-			}
-		}
-		.padding(16)
-	}
-}
-
 struct MountainViewCard_Previews: PreviewProvider {
 	static var previews: some View {
 		let threeColumnGrid = [GridItem(.flexible())]
 		return ScrollView {
 			LazyVGrid(columns: threeColumnGrid, spacing: 20) {
 				MountainCardView {
-					Text("Makinohara Shoko")
+					VStack {
+						Text("Rascal Does Not Dream of a Sister Venturing Out Reveals Visual and Trailer, June 23 Premiere")
+							.font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
+						AsyncImage(url: URL(string: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2023/03/rascaldoesnotdreamofasisterventuringout_mainvisual-1-e1679805501133.jpg?resize=696%2C391&ssl=1")) { image in
+							image.resizable()
+								.scaledToFill()
+						} placeholder: {
+							ProgressView()
+						}
+						Text("The Rascal Does Not Dream of a Sister Venturing Out anime has received a main visual and a trailer. It was also announced that it will premiere in Japanese theaters on June 23.").font(.MountainView.relative(.regular, size: 16, relativeTo: .body))
+					}
+				} footer: {
+					HStack {
+						MountainViewButton(text: "Get tickets", action: {}, buttonStyle: MountainFillButtonStyle())
+						MountainViewButton(text: "Learn more", action: {}, buttonStyle: MountainOutlinedButtonStyle())
+						Spacer()
+						Image(systemName: "ellipsis").rotationEffect(.degrees(90))
+					}
+				}
+
+				MountainCardView {
+					Text("Headline")
 						.font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
+					Text("A simple body example of possible content holder inside of container")
+						.font(.MountainView.relative(.regular, size: 16, relativeTo: .body))
 				}
 				MountainCardView {
 					Text("Rascal Does Not Dream of a Dreaming Girl").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
