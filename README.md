@@ -1,9 +1,11 @@
-# MountainViewUI (Work in Progress)
+# MountainViewUI
+<img src="/images/MountainViewUI_Banner.png" height="200" />
 
 [![Swift Version](https://img.shields.io/badge/Swift-5.8-orange.svg)](https://swift.org)
 [![License](https://img.shields.io/github/license/misaki1301/MountainViewUI)](https://github.com/misaki1301/MountainViewUI/blob/main/LICENSE)
+![build and test workflow](https://github.com/misaki1301/MountainViewUI/actions/workflows/swift.yml/badge.svg)
+![issues](https://img.shields.io/github/issues/misaki1301/MountainViewUI)
 
-<img src="/images/MountainViewUI_Banner.png" height="200" />
 
 MountainViewUI is a Material Design implementation for SwiftUI that brings the modern and beautiful UI elements from Google's Material Design to your iOS apps. Please note that this package is still a work in progress, and some features might be missing or subject to changes.
 

@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct MountainButtonStyle: ButtonStyle {
-	func makeBody(configuration: Configuration) -> some View {
+public struct MountainButtonStyle: ButtonStyle {
+	public init() {}
+	public func makeBody(configuration: Configuration) -> some View {
 		MountainButtonView(configuration: configuration)
 	}
 }
@@ -34,8 +35,9 @@ private extension MountainButtonStyle {
 	}
 }
 
-struct MountainOutlinedButtonStyle: ButtonStyle {
-	func makeBody(configuration: Configuration) -> some View {
+public struct MountainOutlinedButtonStyle: ButtonStyle {
+	public init() {}
+	public func makeBody(configuration: Configuration) -> some View {
 		MountainOutlinedButtonView(configuration: configuration)
 	}
 }
@@ -63,8 +65,9 @@ private extension MountainOutlinedButtonStyle {
 	}
 }
 
-struct MountainFillButtonStyle: ButtonStyle {
-	func makeBody(configuration: Configuration) -> some View {
+public struct MountainFillButtonStyle: ButtonStyle {
+	public init() {}
+	public func makeBody(configuration: Configuration) -> some View {
 		MountainFillButtonStyleView(configuration: configuration)
 	}
 }
