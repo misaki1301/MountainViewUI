@@ -8,6 +8,9 @@
 import SwiftUI
 
 @available(iOS 15, *)
+@available(macOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 public struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
 	var id: String = ""
 	var text: String
