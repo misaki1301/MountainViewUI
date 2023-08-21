@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Orientation {
+public enum Orientation {
 	case vertical
 	case horizontal
 }
@@ -41,30 +41,64 @@ where Image: View, Content: View, Footer: View {
 	///   - content: the card's content
 	///   - image: a view that holds an image (AsyncImage or Image)
 	///   - footer: a view that holds usually buttons
-	public init(@ViewBuilder content: @escaping () -> Content,
+	public init(orientation: Orientation = .vertical,
+				cornerRadius: Double = 12,
+				padding: Double = 16,
+				paddingBetweenCards: Double = 8,
+				alignment: HorizontalAlignment = .leading,
+				@ViewBuilder content: @escaping () -> Content,
 				@ViewBuilder image: @escaping () -> Image,
-				@ViewBuilder footer: @escaping () -> Footer) {
+			@ViewBuilder footer: @escaping () -> Footer) {
 		self.content = content
 		self.image = image
 		self.footer = footer
+		self.orientation = orientation
+		self.cornerRadius = cornerRadius
+		self.padding = padding
+		self.paddingBetweenCards = paddingBetweenCards
+		self.alignment = alignment
 	}
 	
 	/// Creates a card with a content and a footer
 	/// - Parameters:
 	///   - content: the card's content
 	///   - footer: a view that usuarlly holds action buttons
-	public init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder footer: @escaping () -> Footer) where Image == EmptyView {
+	public init(
+		orientation: Orientation = .vertical,
+		cornerRadius: Double = 12,
+		padding: Double = 16,
+		paddingBetweenCards: Double = 8,
+		alignment: HorizontalAlignment = .leading,
+		@ViewBuilder content: @escaping () -> Content,
+		@ViewBuilder footer: @escaping () -> Footer)
+	where Image == EmptyView {
 		self.content = content
 		self.image = {EmptyView()}
 		self.footer = footer
+		self.orientation = orientation
+		self.cornerRadius = cornerRadius
+		self.padding = padding
+		self.paddingBetweenCards = paddingBetweenCards
+		self.alignment = alignment
 	}
 	
 	/// Creates a card with a content on it
 	/// - Parameter content: a view that holds the content
-	public init(@ViewBuilder content: @escaping () -> Content) where Image == EmptyView, Footer == EmptyView {
+	public init(orientation: Orientation = .vertical,
+				cornerRadius: Double = 12,
+				padding: Double = 16,
+				paddingBetweenCards: Double = 8,
+				alignment: HorizontalAlignment = .leading,
+				@ViewBuilder content: @escaping () -> Content)
+	where Image == EmptyView, Footer == EmptyView {
 		self.content = content
 		self.image = {EmptyView()}
 		self.footer = {EmptyView()}
+		self.orientation = orientation
+		self.cornerRadius = cornerRadius
+		self.padding = padding
+		self.paddingBetweenCards = paddingBetweenCards
+		self.alignment = alignment
 	}
 
 	public var body: some View {
@@ -104,10 +138,11 @@ struct MountainViewCard_Previews: PreviewProvider {
 		let threeColumnGrid = [GridItem(.flexible())]
 		return ScrollView {
 			LazyVGrid(columns: threeColumnGrid, spacing: 20) {
-				MountainCardView {
+				MountainCardView(padding: 0) {
 					VStack {
 						Text("Rascal Does Not Dream of a Sister Venturing Out Reveals Visual and Trailer, June 23 Premiere")
 							.font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
+							.padding(16)
 						AsyncImage(url: URL(string: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2023/03/rascaldoesnotdreamofasisterventuringout_mainvisual-1-e1679805501133.jpg?resize=696%2C391&ssl=1")) { image in
 							image.resizable()
 								.scaledToFill()
@@ -115,6 +150,7 @@ struct MountainViewCard_Previews: PreviewProvider {
 							ProgressView()
 						}
 						Text("The Rascal Does Not Dream of a Sister Venturing Out anime has received a main visual and a trailer. It was also announced that it will premiere in Japanese theaters on June 23.").font(.MountainView.relative(.regular, size: 16, relativeTo: .body))
+							.padding(16)
 					}
 				} footer: {
 					HStack {
@@ -122,10 +158,10 @@ struct MountainViewCard_Previews: PreviewProvider {
 						MountainViewButton(text: "Learn more", action: {}, buttonStyle: MountainOutlinedButtonStyle())
 						Spacer()
 						Image(systemName: "ellipsis").rotationEffect(.degrees(90))
-					}
+					}.padding(16)
 				}
 
-				MountainCardView {
+				MountainCardView(padding: 12) {
 					Text("Headline")
 						.font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
 					Text("A simple body example of possible content holder inside of container")
