@@ -12,6 +12,7 @@ MountainViewUI is a Material Design implementation for SwiftUI that brings the m
 ## Features
 
 - **Buttons**: Beautifully designed Material buttons for various use cases.
+- **Card View**: Crafted View Cards for every use case in mind.
 - Other components: [To be added in future releases.]
 
 ## Installation
@@ -20,7 +21,7 @@ You can integrate MountainViewUI into your project using Swift Package Manager. 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/misaki1301/MountainViewUI.git", from: "0.1.0")
+    .package(url: "https://github.com/misaki1301/MountainViewUI.git", from: "0.2.0")
 ]
 ```
 
@@ -31,6 +32,9 @@ Import the library like here:
 import SwiftUI
 import MountainViewUI
 ```
+### Cards
+MountainViewUI supports now CardView with closures:
+
 ### Buttons
 MountainViewUI currently only support 3 types of buttons:
 1. Contained
