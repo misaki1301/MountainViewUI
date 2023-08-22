@@ -29,7 +29,7 @@ public struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {
 	}
 
 	public var body: some View {
-		Button(action: {}) {
+		Button(action: action) {
 			Text(text)
 				.padding(.vertical, vertical)
 				.padding(.horizontal, horizontal)
