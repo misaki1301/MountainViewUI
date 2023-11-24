@@ -17,6 +17,10 @@ enum MountainColor {
 	case background
 	case error
 	case outline_variant
+	case on_surface_variant
+	case on_surface
+	case secondary_container
+	case on_secondary_container
 	
 	var color: Color {
 		switch self {
@@ -34,6 +38,15 @@ enum MountainColor {
 				return Color("error", bundle: .myPackage)
 			case .outline_variant:
 				return Color("outline_variant", bundle: .myPackage)
+			case .on_surface:
+				return Color("on_surface", bundle: .myPackage)
+			case .on_surface_variant:
+				return Color("on_surface_variant", bundle: .myPackage)
+			case .on_secondary_container:
+				return Color("on_secondary_container", bundle: .myPackage)
+			case .secondary_container:
+				return Color("secondary_container", bundle: .myPackage)
+				
 		}
 	}
 }

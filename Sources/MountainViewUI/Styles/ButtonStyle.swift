@@ -8,6 +8,18 @@
 import Foundation
 import SwiftUI
 
+extension ButtonStyle where Self == MountainButtonStyle {
+	static var outlined: MountainOutlinedButtonStyle {
+		MountainOutlinedButtonStyle()
+	}
+	static var filled: MountainFillButtonStyle {
+		MountainFillButtonStyle()
+	}
+	static var contained: MountainButtonStyle {
+		MountainButtonStyle()
+	}
+}
+
 public struct MountainButtonStyle: ButtonStyle {
 	public init() {}
 	public func makeBody(configuration: Configuration) -> some View {

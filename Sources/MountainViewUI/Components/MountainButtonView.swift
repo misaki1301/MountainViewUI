@@ -44,10 +44,10 @@ struct Button_Previews: PreviewProvider {
 		VStack {
 			Text("MountainView Buttons")
 				.font(.MountainView.relative(.regular, size: 32, relativeTo: .body))
-			MountainViewButton(text: "Help", action: {}, buttonStyle: MountainButtonStyle())
-			MountainViewButton(text: "Contained", action: {}, buttonStyle: MountainButtonStyle())
-			MountainViewButton(text: "Filled", action: {}, buttonStyle: MountainFillButtonStyle())
-			MountainViewButton(text: "Outlined", action: {}, buttonStyle: MountainOutlinedButtonStyle())
+			MountainViewButton(text: "Help", action: {}, buttonStyle: .contained)
+			MountainViewButton(text: "Contained", action: {}, buttonStyle: .contained)
+			MountainViewButton(text: "Filled", action: {}, buttonStyle: .filled)
+			MountainViewButton(text: "Outlined", action: {}, buttonStyle: .outlined)
 		}
     }
 }
