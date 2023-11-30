@@ -12,7 +12,9 @@ MountainViewUI is a Material Design implementation for SwiftUI that brings the m
 ## Features
 
 - **Buttons**: Beautifully designed Material buttons for various use cases.
-- **Card View**: Crafted View Cards for every use case in mind.
+- **Cards**: (Planning to make some showcase of the diferents layouts you can use with it)
+- **SnackBar**: (Currently on development)
+- **BottomBarNavigation**: (Currently on development)
 - Other components: [To be added in future releases.]
 
 ## Installation
@@ -21,7 +23,7 @@ You can integrate MountainViewUI into your project using Swift Package Manager. 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/misaki1301/MountainViewUI.git", from: "0.2.0")
+    .package(url: "https://github.com/misaki1301/MountainViewUI.git", from: "0.1.0")
 ]
 ```
 
@@ -32,9 +34,6 @@ Import the library like here:
 import SwiftUI
 import MountainViewUI
 ```
-### Cards
-MountainViewUI supports now CardView with closures:
-
 ### Buttons
 MountainViewUI currently only support 3 types of buttons:
 1. Contained
@@ -45,6 +44,10 @@ VStack {
     MountainViewButton(text: "Contained", action: {}, buttonStyle: MountainButtonStyle())
     MountainViewButton(text: "Filled", action: {}, buttonStyle: MountainFillButtonStyle())
     MountainViewButton(text: "Outlined", action: {}, buttonStyle: MountainOutlinedButtonStyle())
+#OR
+    MountainViewButton(text: "Contained", action: {}, buttonStyle: .contained)
+    MountainViewButton(text: "Filled", action: {}, buttonStyle: .filled)
+    MountainViewButton(text: "Outlined", action: {}, buttonStyle: .outlined)
 }
 ```
 other components will be added in future releases stay tune!
@@ -54,5 +57,6 @@ Currently I'm working in the documentation and the correct implementation of Mat
 
 ### License
 MountainViewUI is released under the MIT License. See the LICENSE file for details.
+
 
 
