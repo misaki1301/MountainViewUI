@@ -1,5 +1,5 @@
 //
-//  SwiftUIView 2.swift
+//  MountainNavigationBar.swift
 //  
 //
 //  Created by Paul Frank Pacheco Carpio on 19/11/23.
@@ -11,32 +11,44 @@ import SwiftUI
 @available(macOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
-public struct MountainNavigationBar: View {
+public struct MountainNavigationBar<Content>: View where Content: View {
+	var content: Content
 	@State var selectedTab = 0
+	
+	init(@ViewBuilder content: @escaping () -> Content, selectedTab: Int = 0) {
+		self.content = content()
+		self.selectedTab = selectedTab
+	}
+	
 	public var body: some View {
-		ZStack(alignment: .bottom) {
-//			TabView(selection: $selectedTab,
-//					content:  {
-//				Text("Tab Content 1").tabItem { /*@START_MENU_TOKEN@*/Text("Tab Label 1")/*@END_MENU_TOKEN@*/ }.tag(0)
-//				Text("Tab Content 2").tabItem { /*@START_MENU_TOKEN@*/Text("Tab Label 2")/*@END_MENU_TOKEN@*/ }.tag(1)
-//			})
-			//ZStack {
-			HStack(spacing: 32) {
+		VStack {
+			TabView(selection: $selectedTab,
+					content:  {
+				content
+			})
+			.tabViewStyle(.page(indexDisplayMode: .never))
+				.frame(maxHeight: .infinity)
+			ZStack(alignment: .bottom) {
+					//ZStack {
+				HStack(spacing: 32) {
 					ForEach((TabbedItems.allCases), id: \.self) { item in
 						Button {
-							selectedTab = item.rawValue
+							withAnimation {
+								selectedTab = item.rawValue
+							}
 						} label: {
 							MountainTabItem(imageName: item.iconName, title: item.title, isActive: selectedTab == item.rawValue)
 						}
-					
+						
+					}
 				}
 			}
+			.frame(maxWidth: .infinity)
+			.frame(height: 80)
+			.ignoresSafeArea()
+			.background(MountainColor.surface.color)
+				//.cornerRadius(35)
 		}
-		.frame(maxWidth: .infinity)
-		.frame(height: 80)
-		.ignoresSafeArea()
-		.background(MountainColor.surface.color)
-		//.cornerRadius(35)
     }
 }
 
@@ -112,5 +124,11 @@ extension MountainNavigationBar {
 }
 
 #Preview {
-    MountainNavigationBar()
+	MountainNavigationBar(content: {
+		TabView(selection: .constant(1),
+				content:  {
+			Text("Tab Content 1").tabItem { /*@START_MENU_TOKEN@*/Text("Tab Label 1")/*@END_MENU_TOKEN@*/ }.tag(0)
+			Text("Tab Content 2").tabItem { /*@START_MENU_TOKEN@*/Text("Tab Label 2")/*@END_MENU_TOKEN@*/ }.tag(1)
+		})
+	})
 }

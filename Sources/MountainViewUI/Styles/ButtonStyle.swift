@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-extension ButtonStyle where Self == MountainButtonStyle {
+//Static property 'contained' requires the types 'ButtonStyle' and 'MountainButtonStyle' be equivalent
+
+public extension ButtonStyle where Self == MountainButtonStyle {
 	static var outlined: MountainOutlinedButtonStyle {
 		MountainOutlinedButtonStyle()
 	}
