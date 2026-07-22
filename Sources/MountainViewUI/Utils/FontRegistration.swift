@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
 import CoreGraphics
 import CoreText
 import SwiftUI
@@ -24,7 +26,7 @@ func registerFont(named name: String) throws {
 	}
 }
 
-public struct MountainViewFont {
+public struct MountainViewFont : Sendable{
 	public let name: String
 	
 	private init(named name: String) {
@@ -37,7 +39,7 @@ public struct MountainViewFont {
 		}
 	}
 	
-	public static let black = MountainViewFont(named: "Roboto-Black")
+    public static let black = MountainViewFont(named: "Roboto-Black")
 	public static let regular = MountainViewFont(named: "Roboto-Regular")
 	public static let bold = MountainViewFont(named: "Roboto-Bold")
 	public static let light = MountainViewFont(named: "Roboto-Light")
