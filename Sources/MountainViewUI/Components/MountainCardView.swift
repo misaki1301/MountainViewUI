@@ -133,6 +133,7 @@ where Image: View, Content: View, Footer: View {
 	}
 }
 
+@available(iOS 17.0, macOS 14.0, *)
 #Preview(traits: .fixedLayout(width: 512, height: 512)) {
 		let threeColumnGrid = [GridItem(.flexible())]
         
