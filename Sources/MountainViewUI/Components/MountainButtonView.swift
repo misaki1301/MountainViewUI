@@ -1,6 +1,6 @@
 //
-//  SwiftUIView 2.swift
-//  
+//  MountainViewButton.swift
+//
 //
 //  Created by Paul Frank Pacheco Carpio on 1/08/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 15, *)
-@available(macOS, unavailable)
+@available(macOS 14, *)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public struct MountainViewButton<ButtonStyleType: ButtonStyle>: View {

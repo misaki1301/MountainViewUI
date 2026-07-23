@@ -15,7 +15,7 @@ public enum Orientation {
 // there are 3 styles of cards
 // elevated, filled, outlined
 @available(iOS 15, *)
-@available(macOS, unavailable)
+@available(macOS 14, *)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public struct MountainCardView<Image, Content, Footer>{
@@ -30,7 +30,7 @@ public struct MountainCardView<Image, Content, Footer>{
 }
 
 @available(iOS 15, *)
-@available(macOS, unavailable)
+@available(macOS 14, *)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 extension MountainCardView: View
@@ -133,10 +133,10 @@ where Image: View, Content: View, Footer: View {
 	}
 }
 
-struct MountainViewCard_Previews: PreviewProvider {
-	static var previews: some View {
+@available(iOS 17.0, macOS 14.0, *)
+#Preview(traits: .fixedLayout(width: 512, height: 512)) {
 		let threeColumnGrid = [GridItem(.flexible())]
-		return ScrollView {
+        
 			LazyVGrid(columns: threeColumnGrid, spacing: 20) {
 				MountainCardView(padding: 0) {
 					VStack {
@@ -144,14 +144,14 @@ struct MountainViewCard_Previews: PreviewProvider {
 							.font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
 							.padding(16)
 						AsyncImage(url: URL(string: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2023/03/rascaldoesnotdreamofasisterventuringout_mainvisual-1-e1679805501133.jpg?resize=696%2C391&ssl=1")) { image in
-							image.resizable()
+						image.resizable()
 								.scaledToFill()
-						} placeholder: {
+					} placeholder: {
 							ProgressView()
 						}
 						Text("The Rascal Does Not Dream of a Sister Venturing Out anime has received a main visual and a trailer. It was also announced that it will premiere in Japanese theaters on June 23.").font(.MountainView.relative(.regular, size: 16, relativeTo: .body))
-							.padding(16)
-					}
+						.padding(16)
+				}
 				} footer: {
 					HStack {
 						MountainViewButton(text: "Get tickets", action: {}, buttonStyle: MountainFillButtonStyle())
@@ -168,20 +168,35 @@ struct MountainViewCard_Previews: PreviewProvider {
 						.font(.MountainView.relative(.regular, size: 16, relativeTo: .body))
 				}
 				MountainCardView {
-					Text("Rascal Does Not Dream of a Dreaming Girl").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
+					AsyncImage(url: URL(string: "https://images.pexels.com/photos/12801441/pexels-photo-12801441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")) { image in
+						image.resizable()
+							.scaledToFill()
+					} placeholder: {
+						ProgressView()
+					}
+
+				} content: {
+					Text("Most Wonderful Coffee")
 				} footer: {
-					HStack {
+					EmptyView()
+				}
+
+				
+			MountainCardView {
+					Text("Rascal Does Not Dream of a Dreaming Girl").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
+			} footer: {
+				HStack {
 						Spacer()
 						MountainViewButton(text: "GO", action: {
 							
 						}, buttonStyle: MountainFillButtonStyle())
 					}
-				}
+			}
 
 				MountainCardView {
 					Text("Rascal Does Not Dream in Knapsack Girl").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
 				} image: {
-					AsyncImage(url: URL(string: "https://otakuusamagazine.com/wp-content/uploads/2023/07/knapsack-kid.jpg")) { image in
+				AsyncImage(url: URL(string: "https://otakuusamagazine.com/wp-content/uploads/2023/07/knapsack-kid.jpg")) { image in
 						image.resizable()
 							.scaledToFill()
 					} placeholder: {
@@ -189,16 +204,17 @@ struct MountainViewCard_Previews: PreviewProvider {
 					}
 					
 				} footer: {
-					MountainViewButton(text: "XD", action: {
+					MountainViewButton(text: "Go", action: {
 						
 					}, buttonStyle: MountainFillButtonStyle())
 				}
+				
 				MountainCardView {
-					Text("Headline").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
-					Text("Subhead").font(.MountainView.relative(.medium, size: 16, relativeTo: .subheadline))
+					Text("Rascal Does Not Dream of a Dreaming Girl (2019)").font(.MountainView.relative(.medium, size: 28, relativeTo: .headline))
+					Text("ImDb").font(.MountainView.relative(.medium, size: 16, relativeTo: .subheadline))
 					Text("Supporting text")
 				} image: {
-					AsyncImage(url: URL(string: "https://otakuusamagazine.com/wp-content/uploads/2023/07/knapsack-kid.jpg")) { image in
+					AsyncImage(url: URL(string: "https://m.media-amazon.com/images/M/MV5BZDBkYjQwOTUtMDU2Ni00MmIyLTk5NjYtZWE5Mzc3Y2Q5NDlkXkEyXkFqcGdeQXVyMTEyMTM2MjI5._V1_.jpg")) { image in
 						image.resizable()
 							.scaledToFill()
 					} placeholder: {
@@ -208,16 +224,14 @@ struct MountainViewCard_Previews: PreviewProvider {
 				} footer: {
 					HStack {
 						Spacer()
-						MountainViewButton(text: "XD", action: {
+						MountainViewButton(text: "Remind later", action: {
 							
 						}, buttonStyle: MountainOutlinedButtonStyle())
-						MountainViewButton(text: "XD", action: {
+						MountainViewButton(text: "Watch", action: {
 							
 						}, buttonStyle: MountainFillButtonStyle())
 					}
 				}
 			}
-		}
-			.preferredColorScheme(.dark)
-	}
 }
+
